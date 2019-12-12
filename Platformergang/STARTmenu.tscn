@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://STARTmenu.gd" type="Script" id=1]
+[ext_resource path="res://fonts/poco/Poco.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Sprites/Tiles/haha2.png" type="Texture" id=3]
+[ext_resource path="res://Guitar_1_videogameedit.wav" type="AudioStream" id=4]
 
 [node name="STARTmenu" type="Control"]
 anchor_right = 1.0
@@ -12,26 +15,49 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 275.0
-margin_top = 149.0
-margin_right = 364.0
-margin_bottom = 211.0
+margin_left = 266.0
+margin_top = 79.0
+margin_right = 374.0
+margin_bottom = 281.0
+custom_constants/separation = 12
 
 [node name="title" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 89.0
-margin_bottom = 14.0
-text = "Project Monty"
+margin_right = 108.0
+margin_bottom = 102.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.615686, 0.615686, 0.615686, 1 )
+custom_colors/font_outline_modulate = Color( 0.6, 0.0627451, 0.0627451, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "Project Monty_V1"
+align = 1
+valign = 1
+autowrap = true
 
 [node name="Start_game" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 18.0
-margin_right = 89.0
-margin_bottom = 38.0
+margin_top = 114.0
+margin_right = 108.0
+margin_bottom = 152.0
+rect_min_size = Vector2( 54, 38 )
+custom_fonts/font = ExtResource( 2 )
 text = "Start"
 
 [node name="Exit_game" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 42.0
-margin_right = 89.0
-margin_bottom = 62.0
+margin_top = 164.0
+margin_right = 108.0
+margin_bottom = 202.0
+custom_fonts/font = ExtResource( 2 )
 text = "Leave"
+
+[node name="Sprite" type="Sprite" parent="CenterContainer"]
+position = Vector2( -10, 0 )
+scale = Vector2( 0.3, 0.3 )
+z_index = -1
+texture = ExtResource( 3 )
+centered = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -11.107
+autoplay = true
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Start_game" to="." method="_on_Start_game_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Exit_game" to="." method="_on_Exit_game_pressed"]

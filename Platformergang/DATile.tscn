@@ -7,4 +7,3 @@
 [node name="DirtAutoTile" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
-

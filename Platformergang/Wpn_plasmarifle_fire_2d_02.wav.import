@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Wpn_plasmarifle_fire_2d_02.wav-eac5e9a79add6755a8b914e44e8aa745.sample"
+
+[deps]
+
+source_file="res://Wpn_plasmarifle_fire_2d_02.wav"
+dest_files=[ "res://.import/Wpn_plasmarifle_fire_2d_02.wav-eac5e9a79add6755a8b914e44e8aa745.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

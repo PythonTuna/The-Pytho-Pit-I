@@ -1,14 +1,18 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Player/runmontyfix0000.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Player/montyfall.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Player/montyjumop.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Player/runmontyfix0002.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Player/runmontyfix0001.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Player/runmontyfix0002.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/runmontyfix0001.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/montyjumop.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Player/montyidleshoot.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/Player/montycrouch2.png" type="Texture" id=7]
-[ext_resource path="res://Sprite.gd" type="Script" id=8]
-[ext_resource path="res://Sprites/Tiles/Sky.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Player/montyidlegun.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Player/montyfall.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Player/montycrouchground2.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Tiles/Skybruhsky.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Tiles/Skybruhcloun.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Tiles/skybruhland.png" type="Texture" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -17,44 +21,78 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
-"loop": false,
-"name": "fall",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "jump",
-"speed": 16.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "run",
 "speed": 6.0
 }, {
+"frames": [  ],
+"loop": true,
+"name": "gun_fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "jump",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "shoot_idle",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "crouch",
+"name": "prejump",
 "speed": 1.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "shoot_run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "gun_idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "fall",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "crouch",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "gun_run",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 32 )
+extents = Vector2( 13, 24 )
 
 [node name="player" type="KinematicBody2D"]
+collision_mask = 14
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
+[node name="BarrelEnd" type="Position2D" parent="."]
+position = Vector2( 23, 10.5 )
+
 [node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 6 )
 frames = SubResource( 1 )
-animation = "fall"
+animation = "shoot_idle"
 playing = true
-script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -5, 0 )
+position = Vector2( -2, 12 )
 shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -67,9 +105,27 @@ smoothing_speed = 20.0
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.1, 0.1 )
-motion_mirroring = Vector2( 640, 640 )
+motion_scale = Vector2( 0, 0 )
+motion_offset = Vector2( -320, -320 )
 
 [node name="Sky" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 9 )
+texture = ExtResource( 11 )
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_offset = Vector2( 320, -320 )
+motion_mirroring = Vector2( 640, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 12 )
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.2, 0.2 )
+motion_offset = Vector2( 0, -320 )
+motion_mirroring = Vector2( 640, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource( 13 )
 centered = false

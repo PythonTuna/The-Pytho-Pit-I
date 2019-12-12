@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Wpn_pistolplasma_reload.wav-07a3e0ab4a20cdd3430244e7be6f010d.sample"
+
+[deps]
+
+source_file="res://Wpn_pistolplasma_reload.wav"
+dest_files=[ "res://.import/Wpn_pistolplasma_reload.wav-07a3e0ab4a20cdd3430244e7be6f010d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
