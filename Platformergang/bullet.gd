@@ -23,7 +23,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_bullet_body_entered(body):
 	if body.has_method("shot"):
 		body.call("shot")
-		queue_free()
+		
 	else:
 		queue_free()
 	pass # Replace with function body.

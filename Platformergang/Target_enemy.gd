@@ -18,6 +18,6 @@ func _physics_process(delta):
 	pass
 
 func shot():
-		$HitBox.disabled = true
-		$stand.disabled = true
-		$Sprite.visible = false
+	queue_free()
+	load("res://bullet.tscn").queue_free()
+	
